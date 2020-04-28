@@ -53,9 +53,9 @@ class Form extends Component {
     return this.checkValidation() ? this.getValues() : undefined;
   };
 
-  refCollector = ref => this.childReferences.push(ref);
+  refCollector = (ref) => this.childReferences.push(ref);
 
-  collectChildDetails = childProps =>
+  collectChildDetails = (childProps) =>
     this.childDetails.push({
       identifier: childProps.identifier,
       type: childProps.type,
@@ -63,7 +63,7 @@ class Form extends Component {
     });
 
   /* handling onSubmit of each input when user moves to next input from keyboard */
-  onSubmitEditing = index => ev => {
+  onSubmitEditing = (index) => (ev) => {
     if (
       index < this.childReferences.length - 1 &&
       this.childReferences[index + 1].setFocus

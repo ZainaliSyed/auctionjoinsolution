@@ -36,8 +36,9 @@ export const NETWORK_INFO = 'NETWORK_INFO';
 //APP GENERAL ACTIONS
 export const LOGIN = createRequestTypes('LOGIN');
 export const SIGNUP = createRequestTypes('SIGNUP');
-export const FORGOT_PASSWORD = createRequestTypes('FORGOT_PASSWORD');
-export const CHANGE_PASSWORD = createRequestTypes('CHANGE_PASSWORD');
+export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_PARTICIPANT = 'ADD_PARTICIPANT';
+export const ADD_AUCTION = 'ADD_AUCTION';
+export const SAVE_AUCTION = 'SAVE_AUCTION';
+
 export const LOGOUT = 'LOGOUT';
-//APP RELATED ACTIONS
-//ADD HERE

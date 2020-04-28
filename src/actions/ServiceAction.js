@@ -88,3 +88,14 @@ export function logout() {
     type: LOGOUT,
   };
 }
+export function generalSaveAction(
+  type: string,
+  data: object,
+  isConcat: Boolean = false,
+) {
+  return {
+    type,
+    data,
+    isConcat,
+  };
+}

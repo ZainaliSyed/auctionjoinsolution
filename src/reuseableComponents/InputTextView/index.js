@@ -47,7 +47,7 @@ export default class InputTextView extends Component {
     this.props.value && this.props.value.length && this.animateUp();
   }
 
-  setText = txt => {
+  setText = (txt) => {
     this.onChangeText(txt);
     this.animateUp();
   };
@@ -122,7 +122,7 @@ export default class InputTextView extends Component {
     const {isActiveColor, value, ...rest} = this.props;
     return (
       <TextInput
-        ref={ref => (this.textInput = ref)}
+        ref={(ref) => (this.textInput = ref)}
         style={[styles.textInput, isActiveColor]}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
@@ -134,7 +134,7 @@ export default class InputTextView extends Component {
     );
   }
 
-  onChangeText = val => this.setState({val, isError: false});
+  onChangeText = (val) => this.setState({val, isError: false});
 
   onFocus = () => this.animateUp();
 
@@ -171,7 +171,7 @@ export default class InputTextView extends Component {
     }
   }
 
-  onLayout = ev =>
+  onLayout = (ev) =>
     this.setState({
       containerHeight: ev.nativeEvent.layout.height / 2.5,
     });
