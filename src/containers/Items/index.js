@@ -43,6 +43,10 @@ class Demo extends Component {
 
   _onItemPress = () => {
     const {itemName, price} = this.state;
+    if (itemName == '' || price == '') {
+      alert('Insert value');
+      return;
+    }
     const payload = {
       itemName,
       id: utility.randomNumberId(),

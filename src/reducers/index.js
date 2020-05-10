@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import serviceReducer from './serviceReducer';
-import {LOGIN, LOGOUT} from '../actions/ActionTypes';
+
+import {LOGOUT} from '../actions/ActionTypes';
 import auctionReducer from './auctionReducer';
 const appReducer = combineReducers({
   auctionReducer,

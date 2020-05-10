@@ -1,23 +1,14 @@
 import React, {Fragment, Component} from 'react';
 import {connect} from 'react-redux';
 import {SafeAreaView, Text, FlatList, View, StyleSheet} from 'react-native';
-import {pop} from '../../services/NavigationService';
+
 import {dispatchGeneralSaveAction} from '../../dispatchActions';
 
-import {
-  TextField,
-  AppButton,
-  ButtonView,
-  FormHandler,
-} from '../../reuseableComponents';
-import {
-  ADD_PARTICIPANT,
-  ADD_AUCTION,
-  SAVE_AUCTION,
-} from '../../actions/ActionTypes';
+import {TextField, AppButton} from '../../reuseableComponents';
+import {ADD_AUCTION, SAVE_AUCTION} from '../../actions/ActionTypes';
 import {INPUT_TYPES} from '../../reuseableComponents/FormHandler/Constants';
 import utility from '../../utility';
-import ModalDropdown from 'react-native-modal-dropdown';
+
 import {DropDownView, AuctionRow} from '../../components';
 
 class Auction extends Component {
@@ -37,7 +28,10 @@ class Auction extends Component {
   _onItemPress = () => {
     const {auctionReducer, navigation} = this.props;
     const {bidValue, participant} = this.state;
-
+    if (bidValue == '' || participant == '') {
+      alert('Insert value');
+      return;
+    }
     const startValue = +navigation.state.params.itemData.price;
     const payload = {
       itemId: navigation.state.params.itemData.id,
@@ -99,7 +93,7 @@ class Auction extends Component {
   render() {
     const {auctionReducer, navigation} = this.props;
     const item = navigation.state.params.itemData;
-
+    console.log('auctionReducer auction ', auctionReducer.participant);
     return (
       <SafeAreaView style={{flex: 1}}>
         <View
@@ -114,7 +108,12 @@ class Auction extends Component {
         <DropDownView
           placeholderTextinput={'Select Participant Item'}
           type={INPUT_TYPES.OPTIONAL}
-          options={auctionReducer.participant}
+          // options={auctionReducer.participant}
+          options={
+            auctionReducer.participant.length
+              ? auctionReducer.participant
+              : [{category_name: 'NOT LOADED'}]
+          }
           identifier="state_id"
           id={'id'}
           selectedCB={(data) => {

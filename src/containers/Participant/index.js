@@ -38,10 +38,15 @@ class Participant extends Component {
 
   _onItemPress = () => {
     const {participantName} = this.state;
+    if (participantName == '') {
+      alert('Insert Participant Name');
+      return;
+    }
     const payload = {
       category_name: participantName,
       id: utility.randomNumberId(),
     };
+
     dispatchGeneralSaveAction(ADD_PARTICIPANT, payload);
   };
   render() {
